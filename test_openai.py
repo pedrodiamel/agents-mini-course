@@ -2,8 +2,8 @@ from dotenv import load_dotenv
 import os
 from openai import OpenAI
 
-# Carrega as variáveis do .env
-load_dotenv()
+# Carrega as variáveis do .env (override=True força atualização)
+load_dotenv(override=True)
 
 # Lê as credenciais
 api_key = os.getenv("OPENAI_API_KEY")

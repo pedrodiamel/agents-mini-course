@@ -1,7 +1,9 @@
 .vscode
 out
 data
-
+import
+plugins
+logs
 
 .DS_Store
 
