@@ -8,12 +8,12 @@ services:
     environment:
       - NVIDIA_VISIBLE_DEVICES=all
     ports:
-      - "127.0.0.1:11434:11434"  # Bind only to localhost for security
+      - "127.0.0.1:11434:11434" # Bind only to localhost for security
     volumes:
-      - ollama-data:/root/.ollama  # Cross-platform support
+      - ollama-data:/root/.ollama # Cross-platform support
     command: serve
     healthcheck:
-      test: ["CMD", "ollama", "ps"]
+      test: [ "CMD", "ollama", "ps" ]
       interval: 5s
       timeout: 3s
       retries: 5
@@ -27,6 +27,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
     depends_on:
       ollama:
         condition: service_healthy
