@@ -5,6 +5,7 @@ import
 plugins
 logs
 
+.env.m
 .DS_Store
 
 # Byte-compiled / optimized / DLL files
