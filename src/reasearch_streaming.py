@@ -68,6 +68,8 @@ def synthesize_answer(state: ResearchState):
     """
 
     # Streaming da resposta
+    # full_answer = llm.invoke(prompt)  # IGNORE ---
+
     full_answer = ""
     for chunk in llm.stream(prompt):
         content = chunk.content
