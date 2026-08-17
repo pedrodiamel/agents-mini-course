@@ -1,3 +1,7 @@
+
+apps
+src/finance
+
 .vscode
 out
 data
