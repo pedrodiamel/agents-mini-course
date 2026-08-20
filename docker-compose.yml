@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   ollama:
     # https://ollama.com/blog/ollama-is-now-available-as-an-official-docker-image
@@ -28,12 +26,21 @@ services:
       context: .
       dockerfile: ./Dockerfile
     ports:
-      - "8080:8080"
+      - "127.0.0.1:8080:8080" # jupyter
+      - "127.0.0.1:8888:8888" # jupyter (porta default)
+      - "127.0.0.1:6274:6274" # MCP Inspector — interface web
+      - "127.0.0.1:6275:6275" # MCP Inspector — sandbox (MCP Apps)
     depends_on:
       ollama:
         condition: service_healthy
     environment:
       - OLLAMA_HOST=http://ollama:11434
+      # O Inspector escuta em 127.0.0.1 por default, o que e inalcancavel de fora
+      # do container mesmo com a porta publicada. HOST=0.0.0.0 resolve, mas ele se
+      # recusa a abrir em todas as interfaces sem o override explicito abaixo.
+      # E seguro aqui porque as portas sao publicadas so no loopback do host.
+      - HOST=0.0.0.0
+      - DANGEROUSLY_BIND_ALL_INTERFACES=true
     volumes:
       - .:/app
     #command: python demo_ollama.py

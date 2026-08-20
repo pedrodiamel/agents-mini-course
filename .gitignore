@@ -1,6 +1,8 @@
 
 apps
 src/finance
+books/mcp_demo/
+mcp_demo/
 
 .vscode
 out

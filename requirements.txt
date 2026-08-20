@@ -2,9 +2,16 @@ openai
 langchain
 langchain_openai
 langgraph
-dotenv
+python-dotenv
 jupyter
 rich
 
 wikipedia
-arxiv
+arxiv==1.4.8
+
+# arxiv>=2.2.0
+# mcp 2.x renomeou mcp.server.fastmcp -> mcp.server.mcpserver (FastMCP -> MCPServer).
+# A aula usa a API FastMCP, por isso o pin em 1.x.
+mcp>=1.7.1,<2.0
+# pypdf2>=3.0.1
+uv
